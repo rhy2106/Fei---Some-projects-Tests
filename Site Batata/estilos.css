@@ -51,6 +51,7 @@ img .logo{
 }
 .colunaleft{
     margin-left:2.5%;
+    margin-right:2.5%;
     float:left;
     max-width:12.5%;
     width:auto;
