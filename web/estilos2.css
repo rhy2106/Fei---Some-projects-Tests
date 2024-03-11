@@ -1,0 +1,128 @@
+body{
+    background:lightgray;
+}
+.cabecalho{
+    float:left;
+    width:100%;
+    background: bisque;
+    border:solid 3px;
+}
+.cabecalho img{
+    width:150px;
+    height:150px;
+}
+.imagem1{
+    float:left;
+    width:10%;
+}
+.imagem2{
+    float:right;
+    width:10%;
+}
+.titulo{
+    width:80%;
+    float:left;
+    text-align:center;
+    padding-top:30px;
+    color:darkgreen;
+}
+.navegador{
+    margin:0px;
+    list-style:none;
+    padding:0px;
+    text-align:center;
+    background:lightskyblue;
+    float:left;
+    width:100%;
+    padding:20px;
+}
+.navegador li{
+    font-size:15pt;
+    color:darkred;
+    display:inline;
+    margin-left:2.5%;
+    margin-right:2.5%;
+}
+.livro{
+    text-align:center;
+}
+.livro img{
+    padding-right:2.5%;
+    padding-left:2.5%;
+    display:inline;
+    height:518px;
+    width:350px;
+}
+#livro{
+    padding-right:2.5%;
+    padding-left:2.5%;
+    display:inline;
+    height:518px;
+    width:400px;
+}
+h2,p{
+    text-align:center;
+}
+p{
+    color:indigo;
+    font-size:15pt;
+}
+.frame{
+    text-align:center;
+}
+.frame iframe{
+    width:500px;
+    height:500px;
+    margin-right:2.5%;
+    margin-left:2.5%;
+}
+.tabela{
+    margin-left:40%;
+    width:100%;
+    float:left;
+    text-align:center;
+    margin-bottom:20px;
+}
+.tabela2{
+    margin-top:20px;
+    margin-left:41%;
+    float:left;
+    width:auto;
+    background:yellow;
+    padding-right:70px;
+    font-size:12pt;
+    padding-left:0px;
+    margin-bottom:20px;
+}
+.tabela2 a{
+    color:darkred;
+    text-decoration:none;
+}
+table{
+    border: dashed 5px red;
+}
+td,th{
+    border: solid 2px red;
+    color: red;
+    font-size:15pt;
+}
+.footer{
+    float:left;
+    text-align:center;
+    padding-top:50px;
+    padding-bottom:50px;
+    width:100%;
+    background:bisque;
+    font-family:Comic Sans Ms;
+    font-size:15pt;
+}
+.footer1{
+    float:left;
+    width:160px;
+    height:170px;
+}
+.footer2{
+    float:right;
+    width:160px;
+    height:170px;
+}
