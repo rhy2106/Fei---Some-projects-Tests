@@ -1,0 +1,88 @@
+<!DOCTYPE.html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="estilos.css" rel="stylesheet">
+        <title>TESTE</title>
+    </head>
+    <body>
+<!-- Cabeçalho -->
+        <ul class="header">
+            <a href="Home.html"><li class="botao">Home</li></a>
+            <a href="teste.html"><li class="botao">Teste</li></a>
+        </ul>
+<!-- Coluna da Esquerda -->
+        <div class="corpo">
+            <div class="coluna1">
+                <ul class="navegador">
+                    <li class="titulo"><strong>Linguagens</strong></li>
+                    <a href="python.html"><li class="site">Python</li></a>
+                    <a href="html.html"><li class="site">HTML</li></a>
+                    <a href="css.html"><li class="site">CSS</li></a>
+                    <a href="c++.html"><li class="site">C++</li></a>
+                    <a href="javascript.html"><li class="site">JavaScript</li></a>
+                </ul>
+            </div>
+    <!-- Corpo do Site -->
+            <div class="coluna2">
+                <h1 class="titulo">Testes de javascript</h1>
+                <div> <!-- Teste 1 -->
+                    <strong id="t1">Teste 1: Soma</strong> <br>
+                    Digite um numero para realizar uma soma entre eles:<br>
+                    <input id="e1" type="number">
+                    <input id="e2" type="number">
+                    <input type="button" value=">" onclick="soma(e1,e2)">
+                    <p id="r1"></p>
+                </div>
+                <div> <!-- Teste 2 -->
+                    <strong id="t2">Teste 2: Numero Aleatorio</strong> <br>
+                    Clique no botão para gerar um numero aleatorio entre 0 e 50: 
+                    <input type="button" value="Gerar" onclick="aleatorio()">
+                    <p id="r2"></p>
+                </div>
+                <div> <!-- Teste 3 -->
+                    <strong id="t3">Teste 3: Bom</strong> <br>
+                    Digite um numero para verificar se ele é invalido, bom ou muito bom.
+                    <input id="e3" type="number">
+                    <input type="button" value=">" onclick="bom()">
+                    <p id="r3"></p>
+                </div>
+                <div> <!-- Teste 4 -->
+                    <strong id="t4">Teste 4: Cadastro</strong> <br>
+                    <p class="titulo">Nome<br><input id="e4"type="text"></p>
+                    <p class="titulo">Login<br><input id="e5"type="text"></p>
+                    <p class="titulo">Password<br><input id="e6" type="password"></p>
+                    <p class="titulo">
+                        <input type="button" value="Cadastrar" onclick="cadastro()">
+                        <input type="button" value="Limpar" onclick="limpar()">
+                        <input type="button" value="Mostrar Dados" onclick="dados()">
+                    </p>
+                    <p class="titulo" id="r4"></p>
+                </div>
+                <div> <!-- Teste 5 -->
+                    <strong id="t5">Teste 5: Login</strong> <br>
+                    <p class="titulo">Login<br><input id="e7"type="text"></p>
+                    <p class="titulo">Password<br><input id="e8"type="password"></p>
+                    <p class="titulo"><input type="button"value="Login"onclick="logar()"></p>
+                    <p class="titulo" id="r5"></p>
+                </div>
+            </div>
+    <!-- Coluna da Direita -->
+            <div class="coluna3">
+                <ul class="atual">
+                    <li class="titulo"><strong>Atalhos</strong></li>
+                    <a href="#t1"><li>Soma</li></a>
+                    <a href="#t2"><li>Numero Aleatorio</li></a>
+                    <a href="#t3"><li>Bom</li></a>
+                    <a href="#t4"><li>Cadastro</li></a>
+                    <a href="#t5"><li>LOgin</li></a>
+                </ul>
+            </div>
+        </div>
+<!-- Rodapé -->
+        <div class="footer">
+        
+        </div>
+        <script src="script.js" type="text/javascript"></script>
+    </body>
+</html>
