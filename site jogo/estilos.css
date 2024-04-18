@@ -1,0 +1,55 @@
+body{
+    background:#323232;
+    margin:0px;
+    color:white;
+}
+ul{
+    padding:0px;
+    list-style:none;
+}
+/* Cabeçalho do site */
+.header{
+    list-style:none;
+    background:#202020;
+    width:100%;
+    height:80px;
+    margin:0px;
+    margin-bottom: 40px;
+}
+.botao{
+    float:left;
+    margin-left:2.5%;
+    margin-right:2.5%;
+    margin-top:15px;
+    padding-top:8px;
+    border-radius:20px;
+    width:100px;
+    height:30px;
+    text-align:center;
+    background:#363636;
+    border: solid 2px #909090;
+}
+a{
+    color:white;
+    text-decoration:none;
+}
+.botao:hover{
+    color:goldenrod;
+    border-color:goldenrod;
+}
+/* Corpo do site */
+.corpo{
+    display:flex;
+    justify-content:center;
+}
+.corpo th,td{
+    border:2px solid white;
+    padding:10px;
+}
+.titulo{
+    text-align:center;
+    text-decoration:solid;
+}
+canvas{
+    background:white;
+}
