@@ -120,16 +120,16 @@ animacao2();
 // Recebe as teclas que o usuarios esta pressionando
 document.addEventListener("keydown",function(evento){
     tecla = evento.key;
-    if(tecla == "w"){
+    if(tecla == "w" || tecla == "W"){
         jogador.y -= 10;
     }
-    if(tecla == "s"){
+    if(tecla == "s" || tecla == "S"){
         jogador.y += 10;
     }
-    if(tecla == "a"){
+    if(tecla == "a"|| tecla == "A"){
         jogador.x -= 10;
     }
-    if(tecla == "d"){
+    if(tecla == "d"|| tecla == "D"){
         jogador.x += 10;
     }
 });
