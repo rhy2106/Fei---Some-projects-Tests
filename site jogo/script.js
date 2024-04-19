@@ -91,11 +91,11 @@ function animacao2(){
             lista2[i].desenha();
             lista2[i].andar();
             // verificar se o jogador tocou nos carros
-            if(jogador.x + 40 > lista2[i].x && jogador.x < lista2[i].x && jogador.y < lista2[i].y + 60 && jogador.y + 60 > lista2[i].y){
+            if(jogador.x + 40 >= lista2[i].x && jogador.x <= lista2[i].x && jogador.y < lista2[i].y + 60 && jogador.y + 60 > lista2[i].y){
                 perdemo = 2;
             }
 
-            if(jogador.x < lista2[i].x + 40 && jogador.x > lista2[i].x && jogador.y < lista2[i].y + 60 && jogador.y + 60 > lista2[i].y){
+            if(jogador.x <= lista2[i].x + 40 && jogador.x >= lista2[i].x && jogador.y < lista2[i].y + 60 && jogador.y + 60 > lista2[i].y){
                 perdemo = 2;
         
             }
