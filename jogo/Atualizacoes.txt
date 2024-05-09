@@ -1,0 +1,10 @@
+Modifiquei um pouco o info.html e o home1.html para deixar mais organizado
+Removi game.css, home.css e informacoes.css das paginas
+(Os arquivos ainda existem, caso queria separar o css de cada pagina em arquivos diferentes,
+mas prefiro deixar todos em 1 arquivo só para agilizar na hora de mudar algo)
+Modifiquei o style.css pra funcionar em todas as paginas
+Adicionei pelo jogo.html e script.js imagens temporarias ao jogo
+(imagens do jogo armazenadas na pasta "JogoImage")
+Arrumei o bug de carros spawnando um em cima do outro
+
+Obs: depois pode ser melhor renomear algumas imagens pra ficar mais facil de entender o codigo

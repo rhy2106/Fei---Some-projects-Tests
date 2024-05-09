@@ -1,0 +1,35 @@
+.binfo {
+
+    background-image: url('infoImages/papers.co-mo48-jonas-nillson-newyork-white-city-sky-29-wallpaper.jpg');
+
+}
+
+.container{
+    list-style: none;
+    display: flex;
+    justify-content:space-around;
+}
+
+.botao a{
+    color:black;
+    text-decoration: none;
+}
+
+.corpo{
+    display:flex;
+    justify-content:center
+}
+
+.info img {
+
+    margin: 25px;
+    margin-left: 130px;
+
+}
+
+.info h2 {
+
+    margin-left: 150px;
+    margin-right: 150px;
+
+}
