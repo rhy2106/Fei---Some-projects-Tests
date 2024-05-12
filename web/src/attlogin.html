@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link href="estilos.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <ul class="header">
+            <a href="cadastro.html"><li class="botao">Cadastro</li></a>
+            <a href="login.html"><li class="botao">login</li></a>
+            <a href="attlogin.html"><li class="botao">Atualizar</li></a>
+        </ul>
+
+        <div class="corpo">
+            <div class="coluna1">
+
+            </div>
+
+            <div class="coluna2">
+                <h1 class="titulo">Atualizar Senha</h1>
+                <form action="/atualizar_usuario" method="post">
+                    <p>Login: <input type="text" name="login"></p>
+                    <p>Senha: <input type="password" name="senha"></p>
+                    <p>Senha Nova: <input type="password" name="novasenha"></p>
+                    <div class="titulo">
+                        <input type="submit" value="Logar">
+                    </div>
+                </form>
+
+                <h1 class="titulo">Deletar Usuario</h1>
+                <form action="/deletar_usuario" method="post">
+                    <p>Login: <input type="text" name="login"></p>
+                    <p>Senha: <input type="password" name="senha"></p>
+                    <div class="titulo">
+                        <input type="submit" value="Logar">
+                    </div>
+                </form>
+            </div>
+            
+            <div class="coluna3">
+                
+            </div>
+        </div>
+    </body>
+</html>
