@@ -6,7 +6,6 @@ def adicionarExtrato(cpf, moeda, acao, valor):
         if not verificarCpf(cpf,linhas[i]):
             i += 6
             continue
-        nome = linhas[i][23:-1]
         real = float(linhas[i+1][6:-1])
         btc = float(linhas[i+2][5:-1])
         eth = float(linhas[i+3][5:-1])
@@ -40,13 +39,13 @@ def adicionarExtrato(cpf, moeda, acao, valor):
             i = lista[0] + 1
             lista.pop(0)
             continue
-	nome = linhas[i][23:-1]
-	linhas.insert(i+1,f"{tempo.tm_mday}-{tempo.tm_mon}-{tempo.tm_year} {tempo.tm_hour - 3}:{tempo.tm_min} {acao} {valor} {moeda} CT: {ct} TX: {tx} REAL: {real} BTC: {btc} ETH: {eth} XRP: {xrp}\n")
+        tempo = f"{tempo.tm_mday:0>2}-{tempo.tm_mon:0>2}-{tempo.tm_year} {(tempo.tm_hour-3):0>2}:{tempo.tm_min:0>2}"
+        linhas.insert(i+1,f"{tempo} {acao} {valor} {moeda} CT: {ct} TX: {tx} REAL: {real} BTC: {btc} ETH: {eth} XRP: {xrp}\n")
         break
     extrato.close()
-    extrato = open("extrato","w")
+    extrato = open("extrato.txt","w")
     for linha in linhas:
-	    extrato.write(linha)
+        extrato.write(linha)
     extrato.close()
 # ========================================================== #
 def logar():
@@ -101,7 +100,7 @@ def depositar(cpf):
     contas = open("contas.txt", "r")
     while True:
         real = float((input("Digite o valor em Real a ser depositado: ")))
-	v = real
+        v = real
         if real >= 0:
             break
         print("Valor Invalido")
@@ -135,7 +134,7 @@ def sacar(cpf):
             if real < real1:
                 print("impossivel realizar esta ação")
             else:
-		v = real1
+                v = real1
                 break
         real -= real1
         linhas[i+1] = f"REAL: {real:.2f}\n"
@@ -167,12 +166,12 @@ def comprar(cpf):
         real = float(linhas[i+1][6:-1])
         while True:
             real1 = float((input("Digite o valor em reais da compra: ")))
-            if real < real1:
+            if real < real1 + real1*txc:
                 print("impossivel realizar esta ação, digite um novo valor:")
             else:
-		v = real1
+                v = real1
                 break
-        real -= real1
+        real -= (real1 + real1*txc)
         linhas[i+1] =f"REAL: {real:.2f}\n"
         if moeda == "BTC":
             j = 2
@@ -180,7 +179,7 @@ def comprar(cpf):
             j = 3
         elif moeda == "XRP":
             j = 4
-        valor = (float(linhas[i+j][5:-1])) + (real1/ct)*(1-txc)
+        valor = (float(linhas[i+j][5:-1])) + (real1/ct)
         linhas[i+j] = f"{moeda}: {valor:.3f}\n"
         break
     contas = open("contas.txt", "w")
@@ -221,9 +220,9 @@ def vender(cpf):
             else:
                 valor -= valor1
                 linhas[i+j] = f"{moeda}: {valor:.3f}\n"
-		v = valor1
+                v = valor1
                 break
-        real = real + valor1*ct - (real + valor1*ct)*txv
+        real = real + valor1*ct - (valor1*ct)*txv
         linhas[i+1] = f"REAL: {real:.2f}\n"
         break
     contas = open("contas.txt", "w")
@@ -268,11 +267,27 @@ def extrato(cpf):
         nome = linhas[i][23:-1]
         print(f"Nome: {nome}")
         print(f"CPF: {cpf}")
-        for i in range(i+1,len(linhas)):
-            if linhas[i][0] != "\n":
-                print(linhas[i],end="")
-            else:
+        val_tamanho = []
+        for j in range(i+1,len(linhas)):
+            if linhas[j][0] == "\n":
                 break
+            linha = linhas[j].split(" ")
+            for o in range(len(linha)):
+                if j == i + 1:
+                    val_tamanho.append(len(linha[o]))
+                else:
+                    if val_tamanho[o] < len(linha[o]):
+                        val_tamanho[o] = len(linha[0])
+        print(val_tamanho)
+        for j in range(i+1,len(linhas)):
+            if linhas[j][0] == "\n":
+                break
+            linha = linhas[j].split(" ")
+            for o in range(len(linha)):
+                a = val_tamanho[o]
+                print(f"{linha[o]:<{a}}",end="")
+                if linha[j+1][0] != "\n":
+                    print(" ",end="")
         break
     extrato.close()
 # ========================================================== #
