@@ -1,3 +1,58 @@
+
+def adicionarExtrato(cpf, moeda, acao, valor):
+    contas = open("contas.txt", "r")
+    linhas = contas.readlines()
+    i = 0
+    while i < len(linhas):
+        if not verificarCpf(cpf,linhas[i]):
+            i += 6
+            continue
+        nome = linhas[i][23:-1]
+        real = float(linhas[i+1][6:-1])
+        btc = float(linhas[i+2][5:-1])
+        eth = float(linhas[i+3][5:-1])
+        xrp = float(linhas[i+4][5:-1])
+        break
+    contas.close()
+    moedas = open("moedas.txt", "r")
+    for linha in moedas.readlines():
+        if (linha[0] == 'R' and moeda == "REAL")or(linha[0] == 'X' and moeda == "XRP")or(linha[0] == 'B' and moeda == "BTC")or(linha[0] == 'E' and moeda == "ETH"):
+            l = linha.split(" ")
+            if acao == "-":
+                tx = float(l[6])
+            elif acao == "+":
+                tx = float(l[4])
+            ct = float(l[2])
+    moedas.close()
+    
+    from time import gmtime
+    linhas = open("extrato.txt", "r")
+    i = 0
+    lista = []
+    tempo = gmtime()
+    while i < len(linhas):
+        if linhas[i] == "\n":
+            lista.append(i)
+        i += 1
+    i = 0
+    while i < len(linhas):
+        if not verificarCpf(cpf,linhas[i]):
+            i = lista[0] + 1
+            lista.pop(0)
+            continue
+	nome = linhas[i][23:-1]
+	print(f"Nome: {nome}")
+        print(f"CPF: {cpf}")
+	linhas.insert(i+1,f"{tempo.tm_mday}-{tempo.tmon}-{tempo.year} {tempo.tm_hour - 3}:{tempo.tm_min} {valor} {acao} {moeda} CT: {ct} TX: {tx} REAL: {real} BTC: {btc} ETH: {eth} XRP: {xrp}\n")
+        for i in range(i+1,len(linhas)):
+            if linhas[i][0] != "\n":
+                print(linhas[i],end="")
+            else:
+                break
+        break
+    extrato.close()
+
+# ========================================================== #
 def logar():
     while True:
         login = open("usuarios.txt", "r")
@@ -50,6 +105,7 @@ def depositar(cpf):
     contas = open("contas.txt", "r")
     while True:
         real = float((input("Digite o valor em Real a ser depositado: ")))
+	v = real
         if real >= 0:
             break
         print("Valor Invalido")
@@ -66,6 +122,8 @@ def depositar(cpf):
     for linha in linhas:
         contas.write(linha)
     contas.close()
+    adicionarExtrato(cpf, moeda, "+", v)
+    saldo(cpf)
 # ========================================================== #
 def sacar(cpf):
     contas = open("contas.txt", "r")
@@ -81,6 +139,7 @@ def sacar(cpf):
             if real < real1:
                 print("impossivel realizar esta ação")
             else:
+		v = real1
                 break
         real -= real1
         linhas[i+1] = f"REAL: {real:.2f}\n"
@@ -90,6 +149,8 @@ def sacar(cpf):
     for linha in linhas:
         contas.write(linha)
     contas.close()
+    saldo(cpf)
+    adicionarExtrato(cpf, moeda, "-", v)
 # ========================================================== #
 def comprar(cpf):
     moeda = input("Digite a moeda desejada (BTC, ETH ou XRP): ")
@@ -113,6 +174,7 @@ def comprar(cpf):
             if real < real1:
                 print("impossivel realizar esta ação, digite um novo valor:")
             else:
+		v = real1
                 break
         real -= real1
         linhas[i+1] =f"REAL: {real:.2f}\n"
@@ -129,6 +191,8 @@ def comprar(cpf):
     for linha in linhas:
         contas.write(linha)
     contas.close()
+    saldo(cpf)
+    adicionarExtrato(cpf, moeda, "+", v)
 # ========================================================== #
 def vender(cpf):
     moeda = input("Digite a moeda desejada (BTC, ETH ou XRP): ")
@@ -161,6 +225,7 @@ def vender(cpf):
             else:
                 valor -= valor1
                 linhas[i+j] = f"{moeda}: {valor:.3f}\n"
+		v = valor1
                 break
         real = real + valor1*ct - (real + valor1*ct)*txv
         linhas[i+1] = f"REAL: {real:.2f}\n"
@@ -169,6 +234,8 @@ def vender(cpf):
     for linha in linhas:
         contas.write(linha)
     contas.close()
+    saldo(cpf)
+    adicionarExtrato(cpf, moeda, "-", v)
 # ========================================================== #
 def atualizar():
     from random import randint
@@ -212,60 +279,6 @@ def extrato(cpf):
                 break
         break
     extrato.close()
-# ========================================================== #
-def adicionarExtrato(cpf, moeda, acao):
-    contas = open("contas.txt", "r")
-    linhas = contas.readlines()
-    i = 0
-    while i < len(linhas):
-        if not verificarCpf(cpf,linhas[i]):
-            i += 6
-            continue
-        nome = float(linhas[i][23:-1])
-        real = float(linhas[i+1][6:-1])
-        btc = float(linhas[i+2][5:-1])
-        eth = float(linhas[i+3][5:-1])
-        xrp = float(linhas[i+4][5:-1])
-        break
-    contas.close()
-    moedas = open("moedas.txt", "r")
-    for linha in moedas.readlines():
-        if (linha[0] == 'R' and moeda == "REAL")or(linha[0] == 'X' and moeda == "XRP")or(linha[0] == 'B' and moeda == "BTC")or(linha[0] == 'E' and moeda == "ETH"):
-            l = linha.split(" ")
-            if acao == "-":
-                tx = float(l[6])
-            elif acao == "+":
-                tx = float(l[4])
-            ct = float(l[2])
-    moedas.close()
-    
-    from time import gmtime
-    linhas = open("extrato.txt", "r")
-    i = 0
-    lista = []
-    tempo = gmtime()
-    while i < len(linhas):
-        if linhas[i] == "\n":
-            lista.append(i)
-        i += 1
-    i = 0
-    while i < len(linhas):
-        if not verificarCpf(cpf,linhas[i]):
-            i = lista[0] + 1
-            lista.pop(0)
-            continue
-	nome = linhas[i][23:-1]
-	print(f"Nome: {nome}")
-        print(f"CPF: {cpf}")
-	linhas.insert(i+1,f"{tempo.tm_mday}-{tempo.tmon}-{tempo.year} {tempo.tm_hour - 3}:{tempo.tm_min} {acao} {moeda} CT: {ct} TX: {tx} REAL: {real} BTC: {btc} ETH: {eth} XRP: {xrp}\n")
-        for i in range(i+1,len(linhas)):
-            if linhas[i][0] != "\n":
-                print(linhas[i],end="")
-            else:
-                break
-        break
-    extrato.close()
-
 # ========================================================== #
 def menu(cpf):
     while True:
