@@ -1,4 +1,3 @@
-
 def adicionarExtrato(cpf, moeda, acao, valor):
     contas = open("contas.txt", "r")
     linhas = contas.readlines()
@@ -26,7 +25,8 @@ def adicionarExtrato(cpf, moeda, acao, valor):
     moedas.close()
     
     from time import gmtime
-    linhas = open("extrato.txt", "r")
+    extrato = open("extrato.txt","r")
+    linhas = extrato.readlines()
     i = 0
     lista = []
     tempo = gmtime()
