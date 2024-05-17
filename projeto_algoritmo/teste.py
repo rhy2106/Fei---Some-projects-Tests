@@ -47,6 +47,7 @@ def adicionarExtrato(cpf, moeda, acao, valor):
     extrato = open("extrato","w")
     for linha in linhas:
 	    extrato.write(linha)
+    extrato.close()
 # ========================================================== #
 def logar():
     while True:
