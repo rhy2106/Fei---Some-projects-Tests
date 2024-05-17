@@ -122,7 +122,7 @@ def depositar(cpf):
     for linha in linhas:
         contas.write(linha)
     contas.close()
-    adicionarExtrato(cpf, moeda, "+", v)
+    adicionarExtrato(cpf, "REAL", "+", v)
     saldo(cpf)
 # ========================================================== #
 def sacar(cpf):
@@ -150,7 +150,7 @@ def sacar(cpf):
         contas.write(linha)
     contas.close()
     saldo(cpf)
-    adicionarExtrato(cpf, moeda, "-", v)
+    adicionarExtrato(cpf, "REAL", "-", v)
 # ========================================================== #
 def comprar(cpf):
     moeda = input("Digite a moeda desejada (BTC, ETH ou XRP): ")
