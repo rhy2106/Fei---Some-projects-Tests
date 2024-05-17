@@ -43,7 +43,7 @@ def adicionarExtrato(cpf, moeda, acao, valor):
 	nome = linhas[i][23:-1]
 	print(f"Nome: {nome}")
         print(f"CPF: {cpf}")
-	linhas.insert(i+1,f"{tempo.tm_mday}-{tempo.tm_mon}-{tempo.tm_year} {tempo.tm_hour - 3}:{tempo.tm_min} {valor} {acao} {moeda} CT: {ct} TX: {tx} REAL: {real} BTC: {btc} ETH: {eth} XRP: {xrp}\n")
+	linhas.insert(i+1,f"{tempo.tm_mday}-{tempo.tm_mon}-{tempo.tm_year} {tempo.tm_hour - 3}:{tempo.tm_min} {acao} {valor} {moeda} CT: {ct} TX: {tx} REAL: {real} BTC: {btc} ETH: {eth} XRP: {xrp}\n")
         for i in range(i+1,len(linhas)):
             if linhas[i][0] != "\n":
                 print(linhas[i],end="")
