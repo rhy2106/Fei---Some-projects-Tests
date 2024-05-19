@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Resposta</title>
+        <link rel="stylesheet" href="estilos.css">
+    </head>
+
+    <body>
+        <ul class="header">
+            <a href="/"><li class="botao">Home</li></a>
+            <a href="/cadastrar"><li class="botao">Cadastrar</li></a>
+            <a href="/login"><li class="botao">Login</li></a>
+        </ul>
+        <div class="corpo">
+            <div class="coluna1">
+                <ul class="atual">
+                    <li class="titulo"><strong>Vendedores de Carros</strong></li>
+                    <% for(let i = 0; i < items2.length; i++) { %>
+                        <li class="titulo"> <%= items2[i].db_login %> </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="coluna2">
+                <h2 class="titulo">Home</h2>
+                <% for(let i = 0; i < items.length; i++) { %>
+                    <div class="exemplo">
+                        <br>
+                        Vendedor: <%= items[i].db_login %> <br>
+                        Carro: <%= items[i].db_carro %> <br>
+                        Preço: R$ <%= items[i].db_preco %> <br>
+                        Status: <%= items[i].db_status %> <br> <br>
+                        <form action="/comprar" method="post">
+                            <p style="display:none"> <input type="text" value="<%= items[i].db_login %>" name="db_login"> </p>
+                            <p style="display:none"> <input type="text" value="<%= items[i].db_carro %>" name="db_carro"> </p>
+                            <p style="display:none"> <input type="text" value="<%= items[i].db_status %>" name="db_status"> </p>
+                            <input type="submit" value="Comprar"> <br>
+                        </form>
+                        <br>
+                    </div>
+                    <br>
+                <% } %>
+            </div>
+            <div class="coluna3">
+                <ul class="atual">
+                    <li class="titulo"><strong>Quantidade de Carros Disponiveis</strong></li>
+                    <% for(let i = 0; i < items.length; i++) { %>
+                        <% if(items[i].db_status == "Disponivel") { %>
+                            <li class="titulo">
+                                Vendedor: <%= items[i].db_login %> <br>
+                                Carro: <%= items[i].db_carro %> <br>
+                                Status: <%= items[i].db_status %>
+                            </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </body>
+</html>
