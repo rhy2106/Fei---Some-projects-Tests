@@ -1,0 +1,84 @@
+/* Background do site */
+    .bjogo{
+        /* jogo.html */
+        background-image: url('infoImages/pixel-art-artwork-city-sunrise-skyline-cityscape-1981145-wallhere.com.jpg');
+    }
+
+    .binfo {
+        /* info.html */
+        background-image: url('infoImages/papers.co-mo48-jonas-nillson-newyork-white-city-sky-29-wallpaper.jpg');
+    }
+
+    .bhome {
+        /* home.html */
+        background-image: url('infoImages/papers.co-mo48-jonas-nillson-newyork-white-city-sky-29-wallpaper.jpg');
+    }
+
+/* Cabeçalho do site */
+    .container{
+        list-style: none;
+        display: flex;
+        justify-content:space-around;
+    }
+
+    .bjogo .botao a{
+        /* jogo.html */
+        color:white;
+        text-decoration: none;
+    }
+
+    .binfo .botao a{
+        /* info.html */
+        color:black;
+        text-decoration: none;
+    }
+
+    .bhome .botao a{
+        /* home.html */
+        color:black;
+        text-decoration: none;
+    }
+
+/* Corpo do site */
+    .corpo{
+        display:flex;
+        justify-content:center;
+    }
+
+/* Info.html */
+    .info img {
+        width:400px;
+        height:400px;
+        margin: 25px;
+        margin-left: 130px;
+    }
+
+    .info h2 {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+/* Home.html */
+    .bhome p {
+        color: black;
+        margin-left: 100px;
+        margin-top: 150px;
+        font-size: 15pt;
+        width: 700px;
+        text-align: center;
+    }
+
+/* Jogo.html */
+    #jogo1 {
+        width: auto;
+        border-color: red;
+        border-top-style: dashed;
+        border-right-style: dashed;
+        border-bottom-style: dashed;
+        border-left-style: dashed;
+        background-color: white;
+        color: black;
+        display: inline-block;
+        position: absolute;
+        left:60px;
+    }
